@@ -1,53 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!--
+    La version du format du fichier pom.
+    Actuellement la dernière version est la 4.0.0.
+  -->
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Basics -->
-  <groupId>com.github.ekryd.sortpom</groupId>
-  <artifactId>sortpom-parent</artifactId>
-  <version>3.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>SortPom</name>
-  <description>A Maven plugin that sorts the pom.xml file.</description>
+  <!--
+    Le group ID de l'application. Le group ID
+    s'apparente à un package Java mais pour un projet. Il évite
+    une colision de nom dans le cas de deux projets ayant le même nom
+    puiqu'ils peuvent avoir des group ID différents.
+    Ainsi si deux projets s'appelle hello et qu'ils ont des group ID
+    différents, ils sont considérés comme étant des projets différents.
+  -->
+  <groupId>fr.epsi.b3</groupId>
 
-  <modules>
-    <module>sorter</module>
-    <module>maven-plugin</module>
-  </modules>
+  <!--
+    Le nom du projet
+  -->
+  <artifactId>hello</artifactId>
 
+  <!--
+    La version de notre projet. Maven gère le versionnage
+    afin de permettre le suivi des évolutions d'un projet.
+    Ici, le suffixe "-SNAPSHOT" indique à Maven que le projet
+    est en cours de développement pour cette version.
+  -->
+  <version>0.0.1-SNAPSHOT</version>
+
+  <!--
+    Le type de packaging, c'est-à-dire le type de projet.
+    Ici, on indique à Maven que le projet doit être packagé
+    sous la forme d'un WAR. Donc pour Maven, il s'agit d'une
+    application Web.
+  -->
+  <packaging>war</packaging>
+
+  <!--
+    Les propriétés de notre projet. On peut définir des propriétés
+    spécifiques au projet ou des propriétés standard à Maven pour
+    paramétrer la construction du projet.
+  -->
   <properties>
-    <compileSource>1.8</compileSource>
-    <junit.jupiter.version>5.8.1</junit.jupiter.version>
-    <mockito.version>4.0.0</mockito.version>
+    <!--
+      Propriété standard définissant la version minimale de Java supportée
+      par les fichiers sources (ici 1.8 pour Java 8).
+    -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+
+    <!--
+      Propriété standard définissant la version Java des fichiers compilés
+      du projet (ici 1.8 pour Java 8).
+    -->
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!--
+      Le format d'encodage des fichiers source du projet. Attention, l'encodage
+      par défaut n'est pas le même sous Windows et sous les systèmes *NIX.
+      Il est donc plus sage de toujours positionner cette propriété dans le fichier pom.xml.
+    -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <slf4j.version>2.0.0-alpha5</slf4j.version>
   </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>2.11.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-plugin-api</artifactId>
-        <version>3.8.3</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jdom</groupId>
-        <artifactId>jdom</artifactId>
-        <!-- No, this version will never be updated -->
-        <version>1.1.3</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.maven.plugin-tools</groupId>
-        <artifactId>maven-plugin-annotations</artifactId>
-        <version>3.6.1</version>
-        <scope>provided</scope>
-      </dependency>
-    </dependencies>
+</project>
